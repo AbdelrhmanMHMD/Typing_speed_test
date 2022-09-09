@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Typing speed test</title>
+</head>
+
+<body>
+    <div class="game">
+        <div class="start-screen">
+            <div class="container">
+                <div class="lvl-option">
+                    <h2>Choose difficulty:</h2>
+                    <ul>
+                        <li data-lvl="Easy" data-color="#278c27">Easy</li>
+                        <li data-lvl="Normal" data-color="#d09c1f">Normal</li>
+                        <li data-lvl="Hard" data-color="#cd1a1a">Hard</li>
+                    </ul>
+                </div>
+                <button class="start-btn">Start!</button>
+            </div>
+        </div>
+        <div class="game-name">Typing speed <span style="font-size:18px;">test</span></div>
+        <div class="container">
+            <div class="msg">
+                You are playing in [ <span class="lvl">Normal</span> ] Level & you have [ <span class="seconds">3</span> ] seconds
+                to type the word
+            </div>
+            <div class="control">
+                <div class="time">Time left: <span></span> Seconds</div>
+                <div class="score">Score: <span class="got">0</span> from <span class="total"></span></div>
+            </div>
+            <div class="word"></div>
+            <input type="text" class="input">
+            <div class="upcoming-words"></div>
+            <div class="highest-score">Highest score: <span></span></div>
+            <div class="finish">
+                <div class="result">
+                </div>
+                <div class="score">
+                    You scored <span></span> from 30
+                </div>
+                <button>Play Again!</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Developed by <span>Abdelrhman MHMD Bayoumi</span> &copy; 2022</div>
+    <script src="js/js.js"></script>
+</body>
+
+</html>
