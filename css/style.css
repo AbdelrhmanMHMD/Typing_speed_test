@@ -4,32 +4,25 @@
 :root {
 	--main-color: #2196f3;
 }
-html{
-    margin: 0;
-    padding: 0;
+html {
+	margin: 0;
+	padding: 0;
 }
 body {
 	font-family: "Noto Sans", sans-serif;
 	font-family: "Open Sans", sans-serif;
-    background-color: #eee;
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 .game{
-    position: relative;
-    margin-bottom: 55px;
-}
-@media(max-width:430px){
-    .game{
-        margin-bottom: 70px;
-    }
+    background-color: #eee;
 }
 .game .start-screen {
 	position: fixed;
 	width: 100%;
 	height: 100%;
 	background-color: #1f2e20f2;
-    z-index: 1000;
+	z-index: 1000;
 }
 .game .start-screen .container {
 	position: absolute;
@@ -40,7 +33,7 @@ body {
 .game .start-screen .container .lvl-option {
 	display: flex;
 	justify-content: space-evenly;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 .game .start-screen .container .lvl-option h2 {
 	color: white;
@@ -48,16 +41,16 @@ body {
 	margin: 0;
 }
 .game .start-screen .container .lvl-option ul {
-    list-style: none;
-    display: flex;
+	list-style: none;
+	display: flex;
 }
-@media (max-width:480px){
-    .game .start-screen .container .lvl-option ul{
-        margin-top: 40px;
-    }
-    .game .start-screen .container .lvl-option h2{
-        width: 100%;
-    }
+@media (max-width: 480px) {
+	.game .start-screen .container .lvl-option ul {
+		margin-top: 40px;
+	}
+	.game .start-screen .container .lvl-option h2 {
+		width: 100%;
+	}
 }
 .game .start-screen .container .lvl-option ul li {
 	color: white;
@@ -66,10 +59,10 @@ body {
 	display: block;
 	padding: 10px;
 	border-radius: 2px;
-    cursor: pointer;
+	cursor: pointer;
 }
-.game .start-screen li:nth-child(2){
-    background-color: #d09c1f;
+.game .start-screen li:nth-child(2) {
+	background-color: #d09c1f;
 }
 .game .start-screen .container .start-btn {
 	display: block;
@@ -175,6 +168,9 @@ body {
 	margin: 15px 0;
 	justify-content: space-between;
 }
+.game .control .time {
+	margin-right: 15px;
+}
 .game .control span {
 	color: var(--main-color);
 	font-weight: bold;
@@ -242,16 +238,13 @@ body {
 	background-color: #247e28;
 }
 .footer {
-    width: 100%;
-    background-color: var(--main-color);
-    color: white;
-    padding: 12px;
-    text-align: center;
-    z-index: 2;
-    position:fixed;
-    bottom: 0;
-    left:0;
+	width: 100%;
+	background-color: var(--main-color);
+	color: white;
+	padding: 12px;
+	text-align: center;
+	z-index: 2;
 }
-.footer span{
-    font-weight: bold;
+.footer span {
+	font-weight: bold;
 }
