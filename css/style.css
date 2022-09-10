@@ -246,7 +246,7 @@ body {
 .footer span {
 	font-weight: bold;
 }
-@media (min-width: 300px) {
+@media (min-width: 280px) {
     .footer{
         position: absolute;
         bottom: 0;
