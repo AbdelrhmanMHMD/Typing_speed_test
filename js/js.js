@@ -1,51 +1,54 @@
 /*
+03- prevent footer from covering the input
 */
 
 // Adding the words arr
-const words = [
+const words_Easy = [
 	"Hello",
-	"Programming",
 	"code",
-	"Javascript",
 	"Town",
+	"Css",
+	"Coding",
+	"Funny",
+	"Task",
+	"Runner",
+	"Roles",
+	"Rust",
+];
+const words_Normal = [
+	"Javascript",
 	"Country",
-	"Testing",
 	"Youtube",
 	"linkedin",
 	"Twitter",
 	"Github",
-	"Leetcode",
 	"Internet",
 	"Python",
-	"Scala",
-	"Destructuring",
-	"Paradign",
 	"Styling",
 	"Cascade",
-	"Documentation",
-	"Coding",
-	"Funny",
-	"Working",
-	"Dependencies",
-	"Task",
-	"Runner",
-	"Roles",
-	"Test",
-	"Rust",
-	"Playing",
 ];
-
+const words_Hard = [
+	"Programming",
+	"Javascript",
+	"Destructuring",
+	"Documentation",
+	"Dependencies",
+	"Quintessential",
+	"Circumlocution",
+	"Discombobulate",
+	"Chromosomes",
+	"Relationship",
+];
 // Adding lvls object
 const lvls = {
-	Easy: 5,
-	Normal: 3,
-	Hard: 2,
+	Easy: words_Easy,
+	Normal: words_Normal,
+	Hard: words_Hard,
 };
 
 // Adding default lvl
 let lvlName = "Normal";
-let lvlSeconds = lvls[lvlName];
-
+let gameSeconds = 999999;
 // Adding selectors
 let startScreen = document.querySelector(".game .start-screen");
 let lvlOptions = document.querySelectorAll(".start-screen .lvl-option li");
@@ -73,15 +76,14 @@ input.onpaste = () => {
 lvlOptions.forEach((option) => {
 	option.addEventListener("click", function () {
 		lvlName = this.dataset.lvl;
-		lvlSeconds = lvls[lvlName];
 		option.parentElement.querySelectorAll("li").forEach((ele) => {
 			ele.style.backgroundColor = "transparent";
 		});
 		option.style.backgroundColor = option.dataset.color;
 		lvlNameSpan.style.color = option.dataset.color;
 		lvlNameSpan.innerHTML = lvlName;
-		lvlSecondsSpan.style.color = option.dataset.color;
-		lvlSecondsSpan.innerHTML = lvlSeconds;
+        lvlSecondsSpan.style.color = option.dataset.color;
+        lvlSecondsSpan.innerHTML = gameSeconds;
 	});
 });
 
@@ -92,12 +94,13 @@ startBtn.onclick = function () {
 	upcomingWordsDiv.style.display = "block";
 
 	// setting innerHTML lvlName and seconds
-	timeleftSecondsSpan.innerHTML = lvlSeconds;
-	totalScore.innerHTML = words.length;
-
+	timeleftSecondsSpan.innerHTML = gameSeconds;
+    totalScore.innerHTML = lvls[lvlName].length;
+    
 	// setting the highest score of the level
 	highestScoreLvl();
-
+    
+    lvlSecondsSpan.innerHTML = gameSeconds;
 	input.value = "";
 	input.focus();
 	getRandomWord();
@@ -105,16 +108,16 @@ startBtn.onclick = function () {
 
 function getRandomWord() {
 	// get random word
-	let randomWord = words[Math.floor(Math.random() * words.length)];
+	let randomWord = lvls[lvlName][Math.floor(Math.random() * lvls[lvlName].length)];
 
 	// show random word on word div
 	wordDiv.innerHTML = randomWord;
 
 	// get random word index
-	let wordIndex = words.indexOf(randomWord);
+	let wordIndex = lvls[lvlName].indexOf(randomWord);
 
 	// remove the random word from words arr
-	words.splice(wordIndex, 1);
+	lvls[lvlName].splice(wordIndex, 1);
 
 	// stating timer
 	handleGameTimer();
@@ -123,21 +126,21 @@ function getRandomWord() {
 	upcomingWordsDiv.innerHTML = "";
 
 	// show upcoming words
-	for (let i = 0; i < words.length; i++) {
+	for (let i = 0; i < lvls[lvlName].length; i++) {
 		let div = document.createElement("div");
-		let text = document.createTextNode(words[i]);
+		let text = document.createTextNode(lvls[lvlName][i]);
 		div.appendChild(text);
-        upcomingWordsDiv.appendChild(div);
-    }
-    if (upcomingWordsDiv.innerHTML == '') {
-        upcomingWordsDiv.innerHTML = 'No more words!';
-    }
+		upcomingWordsDiv.appendChild(div);
+	}
+	if (upcomingWordsDiv.innerHTML == "") {
+		upcomingWordsDiv.innerHTML = "No more words!";
+	}
 }
 
 // playing the timer of the game
 function handleGameTimer() {
 	// reset timer
-	timeleftSecondsSpan.innerHTML = lvlSeconds;
+	timeleftSecondsSpan.innerHTML = gameSeconds;
 
 	let gameTimer = setInterval(function () {
 		// decrese time by second
@@ -147,7 +150,7 @@ function handleGameTimer() {
 		if (timeleftSecondsSpan.innerHTML == "0") {
 			clearInterval(gameTimer);
 
-			if (input.value.toLowerCase() == wordDiv.innerHTML.toLowerCase()) {
+			if (input.value.toLowerCase().trim() == wordDiv.innerHTML.toLowerCase()) {
 				// increase got score
 				gotScore.innerHTML++;
 
@@ -155,7 +158,7 @@ function handleGameTimer() {
 				input.value = "";
 
 				// get new word
-				if (words.length > 0) {
+				if (lvls[lvlName].length > 0) {
 					getRandomWord();
 				} else {
 					// display finish screen
@@ -220,7 +223,9 @@ function handleGameTimer() {
 function highestScoreLvl() {
 	// setting the highest score
 	if (localStorage.getItem(`score-${lvlName}`) != null) {
-		highestScoreSpan.innerHTML = `${localStorage.getItem(`score-${lvlName}`)} [ ${lvlName} ]`;
+		highestScoreSpan.innerHTML = `${localStorage.getItem(
+			`score-${lvlName}`
+		)} [ ${lvlName} ]`;
 	} else {
 		highestScoreSpan.innerHTML = "0";
 	}
