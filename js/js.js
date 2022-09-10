@@ -48,7 +48,7 @@ const lvls = {
 
 // Adding default lvl
 let lvlName = "Normal";
-let gameSeconds = 999999;
+let gameSeconds = 3;
 // Adding selectors
 let startScreen = document.querySelector(".game .start-screen");
 let lvlOptions = document.querySelectorAll(".start-screen .lvl-option li");
