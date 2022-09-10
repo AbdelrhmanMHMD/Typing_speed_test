@@ -246,10 +246,3 @@ body {
 .footer span {
 	font-weight: bold;
 }
-@media (min-width: 280px) {
-    .footer{
-        position: fixed;
-        bottom: 0;
-        left: 0;
-    }
-}
